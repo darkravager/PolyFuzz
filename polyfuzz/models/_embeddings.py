@@ -125,6 +125,6 @@ class Embeddings(BaseMatcher):
         for name in strings:
             sentence = Sentence(name)
             self.document_embeddings.embed(sentence)
-            embeddings.append(sentence.embedding.cpu().numpy())
+            embeddings.append(sentence.embedding.detach().cpu().numpy())
 
         return np.array(normalize(embeddings), dtype="double")
